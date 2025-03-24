@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<style>
+  flex{
+    display:flex;
+  }
+  flex>*{
+    margin:1%;
+  }
+</style>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Web app Luncher</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">share</a></li>
+      </ul>
+    </div>
+  </nav>
+  <ul id="slide-out" class="sidenav">
+    <div class="user-view">
+    <h2>add page</h2>
+    <form>
+      <label for="name">name</label>
+      <input name="name" id="name">
+      <label for="path">path</label>
+      <input name="path" id="path">
+      <input type="submit">
+    </form>
+    </div> 
+  </ul>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <flex>
+        <a href="#" data-target="slide-out" class="sidenav-trigger waves-effect waves-light btn"><i class="material-icons">add</i></a>
+        <a href="#" data-target="slide-out" class="sidenav-trigger waves-effect waves-light btn"><i class="material-icons">docs</i></a>
+      </flex>
+<table>
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for data in datas %}
+          <tr>
+            <td>{{data[1]}}</td>
+            <td>{{data[2]}}</td>
+            <td><a href="/link/{{ data[0] }}" data-target="slide-out" class="waves-effect waves-light btn">copy</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  </div>
+
+
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, options);
+  });
+
+  // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
+  // var collapsibleElem = document.querySelector('.collapsible');
+  // var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+        
+</script>
+
+  </body>
+</html>
